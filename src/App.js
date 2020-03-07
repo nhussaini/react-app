@@ -1,45 +1,58 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-const app= props => {
-  const [ personsState, setPersonsState]=useState(//this is a new feature in javascript, called array destructring
-     {
+class App extends Component {
+  state = {
+    persons: [
+      {name: 'Max', age:28},
+      {name: 'Manu', age:21},
+      {name: 'Stephanie', age:88}
+    ],
+    showPersons:false
+  }
+  switchNameHandler= () =>{
+    //console.log('was clicked!');
+    this.setState({
       persons: [
-        {name: 'Max', age:28},
-        {name: 'Manu', age:21},
-        {name: 'Stephanie', age:88}
+      {name: 'Maxilium', age:28},
+      {name: 'Manu', age:21},
+      {name: 'Stephanie', age:88}
       ],
-      otherState: 'some other value'  
-    }); 
+      
+    })
+  }
 
-    const switchNameHandler= () =>{
-      //console.log('was clicked!');
-      setPersonsState({
-        persons: [
-        {name: 'Maxilium', age:28},
-        {name: 'Manu', age:21},
-        {name: 'Stephanie', age:5}
-        ]
-      });
-    };
-  
+  nameChangedHandler = (event) =>{
+    this.setState({
+      persons: [
+      {name: 'Maxilium', age:28},
+      {name: event.target.value, age:21},
+      {name: 'Stephanie', age:88}
+      ],
+      
+    })
+  }
 
-  
+  togglePersonsHandler = () => {
+    const doesShow=this.state.showPersons;
+    this.setState({showPersons:!doesShow});
+  }
+  render() {
     return (
       <div className="App">
        <h1>I am a react app</h1>
-       <button onClick={switchNameHandler}>Switch Name!</button>
-       <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
-       <Person name={personsState.persons[1].name} age={personsState.persons[1].age}> my hobby:soccer</Person>
-       <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
+       <button onClick={this.togglePersonsHandler}>Switch Name!</button>
+       { this.state.showPersons===true ?
+         <div>
+          <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler}> my hobby:soccer</Person>
+          <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+       </div> : null
+      }
       </div>
     );
-   
+  }
 }
 
-export default app;
-
-
-
-
+export default App;
