@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import './App.css';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 
 
 const StyledButton = styled.button`
