@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -84,6 +84,7 @@ class App extends Component {
       classes.push('bold');
     }
     return (
+    <StyleRoot>
       <div className="App">
        <h1>I am a react app</h1>
        <p class={classes.join(' ')}>this is really working!</p>
@@ -94,6 +95,7 @@ class App extends Component {
         
       
       </div>
+    </StyleRoot>
     );
   }
 }
