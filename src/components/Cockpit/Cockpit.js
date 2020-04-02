@@ -13,14 +13,14 @@ const cockpit = (props) =>{
     if(props.persons.length<=2){
       assignedClasses.push(classes.red);
     }
-    if(this.state.persons.length<=1){
+    if(props.persons.length<=1){
       assignedClasses.push(classes.bold);
     }
     return(
         <div className={classes.Cockpit}>
         <h1>I am a react app</h1>
         <p class={assignedClasses.join(' ')}>this is really working!</p>
-        <button className={btnClass.join(' ')} onClick={props.togglePersonsHandler}>Toggle Persons!</button>
+        <button className={btnClass} onClick={props.clicked}>Toggle Persons!</button>
         </div>
     );
 }
