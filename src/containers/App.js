@@ -7,6 +7,10 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log('[App.js] contructor');
+  }
   state = {
     persons: [
       {id:'fda',name: 'Max', age:28},
@@ -14,6 +18,15 @@ class App extends Component {
       {id:'gfsdv',name: 'Stephanie', age:88}
     ],
     showPersons:false
+  }
+
+  static getDerivedStateFromProps(props,state){
+    console.log('[app.js] getDerivedStateFromProps',props);
+    return state;
+  }
+
+  componentDidMount(){
+    console.log('[apps.js] componentDidMount');
   }
   
 
@@ -45,6 +58,7 @@ class App extends Component {
     this.setState({showPersons:!doesShow});
   }
   render() {
+    console.log('[app.js] render');
 
     let persons=null;
   

@@ -5,7 +5,7 @@ import classes from  './Person.css';
 
 
 const person =(props)=>{
-  
+  console.log('[person.js] rendering ..');
     return (
     //<div className="Person" style={style}>
         <div className={classes.Person}>
